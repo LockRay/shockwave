@@ -2,13 +2,16 @@
 
 Shockwave is a cellular automata created by Lock. The rules are as follows.
 
-```A becomes B
+```
+A becomes B
 B becomes A, unless next to an A: then it becomes 0
-0 becomes 0, unless next to an A: then it becomes A```
+0 becomes 0, unless next to an A: then it becomes A
+```
 
 It was initially created to create a sort of rippling effect with the simplest starting position. See below.
 
-```00000A00000
+```
+00000A00000
 0000ABA0000
 000AB0BA000
 00AB000BA00
