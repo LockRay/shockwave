@@ -13,7 +13,8 @@ It was initially created to create a sort of rippling effect with the simplest s
 000AB0BA000
 00AB000BA00
 0AB00000BA0
-AB0000000BA```
+AB0000000BA
+```
 
 It creates this rippling effect with 1d and 2d automata alike, and I postulate that the same will occur for n dimensional automata under the above ruleset.
 
