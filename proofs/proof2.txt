@@ -1,0 +1,9 @@
+Proof 2 by Zwei. This proof is a trivial extention of proof 1 that proves that it is impossible for all "matter" (As and Bs) to die out.
+
+As proved by penpot in proof 1, the rules for travelling backwards in time are as follows:
+
+B becomes A
+A becomes B, unless next to a B: then it becomes 0
+0 becomes 0, unless next to a B: then it becomes B
+
+applying these rules on the sea of zeroes, we get the sea of zeroes, as there are no Bs to convert any of the zeroes. Thus, the only configuration that leads to a sea of zeroes is the sea of zeroes.

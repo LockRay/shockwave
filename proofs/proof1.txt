@@ -1,0 +1,39 @@
+Proof 1 by penpot. This proof proves that there is only one configuration that leads to another, and that thus this cell auto is reversable.
+
+A becomes B
+B becomes A, unless next to an A: then it becomes 0
+0 becomes 0, unless next to an A: then it becomes A
+ 
+=========
+ 
+All B must have come from an A at the same position
+ 
+Then:   B came from A
+ 
+---
+ 
+if there is a 0, then:
+    It was a 0 before without any A around
+    It was a B with an A around
+        If there was an A around, then at this moment there must be an B        at the same position
+        If there was an A around, then that A became B already
+ 
+Then:   0 came from 0, unless it is next to a B: then it came from B
+ 
+---
+ 
+If there is a A, then:
+    it was a B without an A around
+        or rather, it was a B and at the moment there is no B around
+    it was a 0 with an A around
+        or rather, it was a B and at the moment there is a B around
+ 
+Then: A came from B, unless it is next to a B: then it came from 0
+=========
+ 
+So, following the rules in reverse:
+B becomes A
+A becomes B, unless next to a B: then it becomes 0
+0 becomes 0, unless next to a B: then it becomes B
+ 
+Since the time-reversed rules are the same as the normal rules but with A and B switched, and since the normal rules applied to any configuration leads to only one configuration, then the time-reversed rules leads to only one configuration: that is, there is only one configuration that led to the current one.
