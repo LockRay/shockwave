@@ -1,0 +1,55 @@
+The rules of Shockwave are reversible through time. Specifically, when the properties of the states A and B (1 and -1) are reversed, the simulation flows backwards.
+This means, that in a way, A and B are each others opposites. 0 then would be its own opposite, since it's unchanged with the reversal of time.
+
+A result of this, is that every configuration of the automaton has an "anti-configuration" or "inverse configuration", where every A is replaced with a B and every 0 stays as it was. An anti-configuration will evolve similarly to its inverse, except backwards.
+
+As an example the configuration `00A0B00` is the anti-config of `00B0A00`.
+
+Now, as Shockwave is reversible, the configurations for a given finite graph are naturally organized into loops. An interesting idea is to examine where in these cycles anti-configurations end up relative to each other.
+
+In order to understand what this means, consider that the evolutions of a pair of anti-configs are each other's opposites, so the child-state of one will be the parent-state of the other:
+
+    `00A0B00` -(is the parent of)-> `0ABAA00`
+        ↑                               |
+(is the inverse of)             (is the inverse of)
+        |                               ↓
+    `00B0A00`<-(is the parent of)-  `0BABB00`
+
+
+After analyzing all cycles from 1-dimensional regular graphs with up to 7 vertices, I concluded that there are two distinct cases regarding the locations of these inverse pairs withing cycles.
+
+1. They are contained within a single cycle (self-dual cycle):
+In this case the pairs of inverse states define a line of symmetry through the cycle. At the endpoints of this line lie two configurations that directly success each other and at the same time are inverse of each other. The only configurations with this property are ones that entirely lack either vertices in state A, or in state B, or both. For example the configuration `0A00A00` has no Bs in it, and is preceded by `0B00B00` which has no As.
+There are always two such pairs of consecutive inverses in a self-dual cycle, directly opposite of each other.
+The only exception being a null 1-cycle (a configuration consisting entirely of state 0). This happens to be its own anti-configuration, as well as its own parent and child state.
+If conservation of "momentum" is proven, one can also conclude that these sorts of cycles will always have 0 momentum, as there is always an instant during which either A or B is missing, therefore there can exist no AB or BA pairs, for that instant.
+
+  ↓‾‾‾‾‾‾‾‾‾|
+00A00 --- 00B00 Notice the pairs of special configurations at the top and bottom, and how the split the cycle in two.
+  ↓         ↑
+0ABA0 --- 0BAB0
+  ↓         ↑
+AB0BA --- BA0AB
+  ↓         ↑                     ↓‾‾‾‾‾|
+B000B --- A000A                 00000   | A null 1-cycle is the only case of a self-inverse state
+  |_________↑                     |_____|
+
+//The dotted lines represent an inverse relationship, while the arrows represent a parent-child relationship//
+
+2. They are contained in two distinct cycles (dual pair of cycles)
+In this case each configuration never evolves into its inverse, but exists in an entirely separate cycle. This means there are two entire cycles that are each others' opposites. If you line up the pairs of inverse states the two cycles flow in opposite directions, and are essentially identical except with As and Bs swapped.
+If the "momentum" of a cycle is not 0 it will always end up in this category, which makes sense if you consider that the dual cycle will have the opposite momentum (AB is turned into BA via the inversion).
+Because of this, one could assume that every cycle with 0 momentum will be self dual, but it turns out that isn't the case. Though relatively rare for small vertex numbers, there are some cycles with 0 total momentum that still separate into dual pairs of cycles.
+                                                                                    .          .
+|‾‾‾‾↓         |‾‾‾‾‾|                                                              .          .
+|  BA000 --- AB000   |                                                              .          .
+|    ↓         ↑     |                                                              ↓          ↑      These cycles are too long to show
+|  0BA00 --- 0AB00   | Notice how the dual cycles flow in                         BB0BAA --- AA0ABB   here (T = 27) but they are
+|    ↓         ↑     | opposite directions from each other.                         ↓          ↑      disconnected despite having a
+|  00BA0 --- 00AB0   | This example has a momentum of 1, so                       0A00BB --- 0B00AA   total momentum of 0. Which is
+|    ↓         ↑     | it's unsurprising that it's in this                          ↓          ↑      somewhat surprising.
+|  000BA --- 000AB   | form.                                                      ABA0AA --- BAB0BB
+|    ↓         ↑     |                                                              ↓          ↑
+|  A000B --- B000A   |                                                              .          .
+|____|         ↑_____|                                                              .          .
+                                                                                    .          .
