@@ -1,0 +1,66 @@
+Proof 3 by Lock/LockRay. This proof demonstrates that conservation of momentum
+exists for finite regular 1 dimensional graphs.
+
+For a 1-dimensional regular graph (of order 2) with an arbitrary configuration
+of states A, B and 0 on each vertex, let any sequence of neighboring A and
+B-vertices of the form BA have a value of +1 and any of the form AB have a
+value of -1.
+The total sum of the values of BA and AB occurrences in a given configuration
+of the graph is referred to as the momentum (p) of the configuration.
+
+- For the sequence BAX, where X is an arbitrary state for the next vertext
+over, in the next iteration:
+
+0) for any value of X
+B -> 0, since it neighbors A
+A -> B, by definition
+
+1) for X=0 
+X -> A, since it neighbors A
+
+2) for X=B 
+X -> 0, since it neighbors A
+
+3) for X=A 
+X -> B, by definition
+
+Case (1): BA0 -> 0BA, p1=p2=1 momentum is conserved
+Case (2): BAB -> 0B0, p1=p2=0 momentum is conserved
+Case (3): BAA -> 0BB, p1=1, p2=0 momentum is not conserved
+
+Case (3) proves that there is no conservation for an arbitrary graph. However,
+since we're considering regular graphs specifically, it follows that there
+must exist a vertex to the right of X.
+
+- For case (3) let Y be the next neighboring vertex past X such that 
+BAXY = BAAY. In the next iteration:
+
+3.0) for any value of Y
+See (0) and (3)
+
+3.1) for Y=0
+Y -> A, since it neighbors X=A
+
+3.2) for Y=B
+Y -> 0, since it neighbors X=A
+
+3.3) for Y=A
+Y -> B, by definition
+
+Case (3.1): BAA0 -> 0BBA, p1=p2=1 momentum is conserved
+Case (3.2): BAAB -> 0BB0, p1=p2=0 momentum is conserved
+Case (3.3): BAAA -> 0BBB, p1=1, p2=0 momentum is not conserved
+
+We can iterate the same process with case (3.3), examining the next vertex to
+the right of Y.
+In the subcases 1 and 2 (where the rightmost vertex is in state 0 or B
+respectively) the exact same scenario will happen, as there will always be a
+neighboring A to the left. 
+In subcase 3 (where the rightmost vertex is A) the same process can be repeated
+for the next vertex to the right, leading to the same results.
+Assuming the graph is finite, it is guaranteed that eventually a vertex will be
+reached that is not in state A (in the extreme case that would happen when the
+graph loops around to encounter the B to the right of the original sequence).
+
+Therefore, for any finite regular graph of order 2 the total momentum is
+conserved.
