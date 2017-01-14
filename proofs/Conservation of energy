@@ -1,0 +1,112 @@
+Say that:
+C = (AB+BA)/2 + ceiling(n/2)*(0A...A0 + 0B...B0 + BAA...AAB + ABB...BBA + BAA...A0 + ABB...B0 + 0A...AAB + 0B...BBA)
+where A...A and B...B represent a string of A's and B's, respectively, of length n
+
+This can be simplified by counting every instance of AB and BA, and then considering both them and any 0 as X while examining the rest. So we get:
+C = (AB+BA)/2 + ceiling(n/2)*(XA...AX + XB...BX)
+where X can be either 0, AB or BA
+
+From now on, "A-cluster" of will refer to a sequence of consecutive As, "B-cluster" to a sequence of consecutive Bs and "glider" to either BA or AB
+"escaping glider" is an AB next to the left border, or a BA next to the right border. These can be ignored, as they are guaranteed to move in one specific way under one itteration (the B, being next to A will become 0, and the A will become B by definition)
+In the simplified expression, all that needs to be proven is that any individual element of it can only ever convert into another, for any type of border.
+
+in the component (X1)A...A(X2), where A...A is of length n: 
+
+ For X1=X2=0
+ 0AA...AA0 -> ABB...BBA 
+ In the first instance there is 1 A-cluster of length n+2, so C1 = ceiling((n+2)/2)
+ In the second instance there are 2 gliders and 1 B-cluster of length n, so C2 = ceiling(n/2) + 2/2 = ceiling((n+2)/2) - 1 + 1 = ceiling((n+2)/2)
+ Therefore C1 = C2
+
+ For X1=X2=BA
+ BAA...ABA is equivalent to BAA...AAB with an escaping glider
+ because of symmetry, the same is true for X1=X2=AB
+ 
+ For X1=BA, X2=0
+ BAA...AA0 -> 0BB...BBA
+ 1 glider, 1 A-cluster of length n+1, so C1 = 1/2 + ceiling((n+1)/2)
+ 1 B-cluster of length n+1, 1 glider, so C2 = ceiling((n+1)/2) + 1/2
+ Therefore C1 = C2
+ because of symmetry, the same is true for X1=0, X2=AB
+ 
+ For X1=AB, X2=0
+ ABAA...AA0 is equivalent to BAA...AA0 with an escaping glider
+ because of symmetry, the same is true for X1=0, X2=BA
+ 
+ For X1=BA, X2=AB
+ BAA...AAB -> 0BB...BB0
+ 2 gliders, 1 A-cluster of size n, so C1 = 1 + ceiling(n/2)
+ 1 B-cluster of size n+2, so C1 = ceiling((n+2)/2) = ceiling(n/2) + 1
+ Therefore C1 = C2
+ 
+ For X1=AB, X2=BA
+ ABA...ABA is equivalent to BAA...AAB with two escaping gliders
+ 
+in the component (X1)B...B(X2), where B...B is of length n:
+
+ For X1=X2=0
+ 0BB...BB0 -> 0AA...AA0
+ 1 B-cluster of size n+2, so C1 = ceiling((n+2)/2)
+ 1 A-cluster of size n+2, so C1 = ceiling((n+2)/2)
+ Therefore C1 = C2
+
+ For X1=X2=BA
+ BAB...BBA is equivalent to ABB...BBA with an escaping glider
+ because of symmetry, the same is true for X1=X2=AB
+ 
+ For X1=BA, X2=0
+ BABB...B0 -> 0B0A...A0
+ 2 gliders, 1 B-cluster of size n, so C1 = 1 + ceiling(n/2)
+ 1 B-cluster of size 1, 1 A-cluster of size n, so C2 = 1 + ceiling(n/2)
+ because of symmetry, the same is true for X1=0, X2=AB
+ 
+ For X1=AB, X2=0
+ 0ABB...B0 -> AB0A...A0
+ 1 glider, 1 B-cluster of size n, so C1 = 1/2 + ceiling(n/2)
+ 1 glider, 1 A-cluster of size n, so C2 = 1/2 + ceiling(n/2)
+ Therefore C1 = C2
+ because of symmetry, the same is true for X1=0, X2=BA
+ 
+ For X1=BA, X2=AB
+ BABB...BBAB -> 0B0A...A0B0
+ 4 gliders, one B-cluster of size n, so C1 = 2 + ceiling(n/2)
+ 2 B-clusters of size 1, 1 A-cluster of size n, so C2 = 2 + ceiling(n/2)
+ Therefore C1 = C2
+ 
+ For X1=AB, X2=BA
+ 0ABB...BBA0 is equivalent to 0BB....BB0 with two escaping gliders
+ 
+in the component (X1)BA(X2)
+
+ For X1=X2=0
+ 0BA0 -> 00BA
+ 1 glider, so C1 = 1/2
+ 1 glider, so C2 = 1/2
+ Therefore C1 = C2
+ 
+ For X1=X2=BA
+ BABABA is equivalent to X1=BA, X2=0 with an escaping glider
+ 
+ For X1=X2=AB
+ ABBABA is equivalent to X1=AB, X2=0 with an escaping glider
+ 
+ For X1=BA, X2=0
+ BABA0 -> 0B0BA
+ 3 gliders, so C1 = 3/2
+ 1 B-cluster of size 1, 1 glider, so C2 = ceiling(1/2) + 1/2 = 3/2
+ Therefore C1 = C2
+ Because of symmetry, the same is true for X1=0, X2=BA
+ 
+ For X1=AB, X2=0
+ ABBA0 is equivalent to 0 with two escaping gliders
+ 
+ For X1=0, X2=AB
+ 0BAAB -> 00BB0
+ 2 gliders, so C1 = 1
+ 1 B-cluster of size 2, so C2 = ceiling(2/2) = 1
+ Therefore C1 = C2
+ 
+ Because of symmetry, the same is true for the component (X1)AB(X2)
+ 
+This shows that, for any of the possible permutations of, 0, BA and AB as borders, the components of C: XA...AX, XB...BA, BA and AB all evolve into other components
+Therefore C remains constant as a configuration evolves.
