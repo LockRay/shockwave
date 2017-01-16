@@ -1,6 +1,6 @@
-#Shockwave celluar automata
+#Shockwave cellular automaton
 
-Shockwave is a cellular automata created by Lock. The rules are as follows.
+Shockwave is a cellular automaton created by Lock. The rules are as follows.
 
 ```
 A becomes B
