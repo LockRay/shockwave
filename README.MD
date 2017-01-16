@@ -21,6 +21,7 @@ AB0000000BA
 
 It creates this rippling effect with 1d and 2d automata alike, and I postulate that the same will occur for n dimensional automata under the above ruleset.
 
-There are many nontrivial and interesting behaviors that this cellular automata have. One of these is that it is reversable--there is only 1 position that will stem to another position. It has been proven that to reverse it (to step backwards in time), all you have to do is swap the As and Bs in the rule and apply them. This means that a single isolated A (000A000) must be reached from the following sequence: 000B000.
+There are many nontrivial and interesting behaviors that this cellular automaton has. One of these is that it is reversible--there is only 1 position that will stem to another position. It has been proven that to reverse it (to step backwards in time), all you have to do is swap the As and Bs in the rule and apply them. This means that a single isolated A (000A000) must be reached from the following sequence: 000B000.
+In fact not only is it reversible, it is reversible for any possible geometry (neighborhood type and size, boundary conditions etc...) as long as it's finite in size.
 
 Yet another non-trivial behavior that may interest you is that it is impossible for all matter to die--that is it is impossible for a sea of zeroes to occur on any geometry of any dimension given any starting position other than the sea of zeroes.
