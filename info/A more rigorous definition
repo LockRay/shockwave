@@ -1,0 +1,34 @@
+Say there are the vertices v_1, v_2, v_3... v_w ∈ V
+
+A graph G is a description of how these vertices are connected
+For a given graph, each vertex v is connected to a total of d_v other vertices. Each vertex it's connected to is called the 'neighbor' of v, and can be represented by n_i_v. So the 'neighborhood' of v is the set {n_1_v, n_2_v... n_(d_v)_v} which can  be represented by N_v. d_v can also be thought of as the cardinality of N_v, so d_v = |N_v|
+
+For a graph G to be simple, the following conditions have to be met for every vertex v
+- if n_i, n_j ∈ N_v, then n_i != n_j
+- v ∉ N_v
+
+Now, consider the case where each vertex v is given a 'value' [v], which can be 1, 0 or -1 (often written as A, 0 and B repectively)
+
+If we define that x++y = x+y if -1 <= x+y <= 1
+                         -1  if x+y < -1
+                         1   if x+y > 1
+
+The function n(v) can now be defined as n(v) = 1-Π(1-([n_i_v]++1)) with n_i_v ranging through every element in N_v (1 <= i <= d_v)
+n(v) will return 1 if [n_i_v] = 1 for any i, and 0 otherwise.
+
+Now we can finally properly define f(v), the vertex function of Shockwave:
+f(v) = -([v]++n(v))
+or we can expand it to become
+f(v) = -([v]++(1-Π(1-([n_i_v]++1))) with i ranging from 1 to d_v
+
+We can also define the inert function or inversion:
+if(v) = ~v = -[v]
+
+and the active function or dunk:
+af(v) = v' = -([v]++1)
+
+
+Now, say that [v_1] = a, [v_2] = b, [v_3] = c... [v_w] = k
+The collection of values {a, b, c... k} can now be referred to as x.
+
+Then f(x) is the new set {f(a), f(b), f(c)... f(k)}, which represents the new values for each element of V.
