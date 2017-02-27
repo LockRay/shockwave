@@ -1,3 +1,4 @@
+On a 1-dimensional regular graph:
 Say that:
 C = (AB+BA)/2 + ceiling(n/2)*(0A...A0 + 0B...B0 + BAA...AAB + ABB...BBA + BAA...A0 + ABB...B0 + 0A...AAB + 0B...BBA)
 where A...A and B...B represent a string of A's and B's, respectively, of length n
