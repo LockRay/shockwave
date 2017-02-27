@@ -1,0 +1,27 @@
+@RULE Shockwave1D
+
+@TABLE
+
+n_states:4
+neighborhood:Moore
+symmetries:reflect_horizontal
+var a={0,1,2,3}
+var b={0,1,2,3}
+var c={0,1,2,3}
+var d={0,1,2,3}
+var e={0,1,2,3}
+var f={0,1,2,3}
+var g={0,1,2,3}
+
+0,0,1,a,b,c,d,e,f,1
+0,1,a,b,c,d,e,f,g,2
+0,2,1,a,b,c,d,e,f,0
+0,2,a,b,c,d,e,f,g,1
+0,3,a,b,c,d,e,f,g,3
+
+@COLORS
+
+0  48  48  48   dark gray
+1 255 255 255   white
+2   0 255   0   green
+3 128 128 128   gray
