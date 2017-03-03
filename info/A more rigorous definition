@@ -1,7 +1,9 @@
 Say there are the vertices v_1, v_2, v_3... v_w ∈ V
 
 A graph G is a description of how these vertices are connected
-For a given graph, each vertex v is connected to a total of d_v other vertices. Each vertex it's connected to is called the 'neighbor' of v, and can be represented by n_i_v. So the 'neighborhood' of v is the set {n_1_v, n_2_v... n_(d_v)_v} which can  be represented by N_v. d_v can also be thought of as the cardinality of N_v, so d_v = |N_v|
+For a given graph, each vertex v is connected to a total of d_v other vertices. Each vertex it's connected to is called the 'neighbor' of v,
+and can be represented by n_i_v. So the 'neighborhood' of v is the set {n_1_v, n_2_v... n_(d_v)_v} which can  be represented by N_v.
+d_v can also be thought of as the cardinality of N_v, so d_v = |N_v|
 
 For a graph G to be simple, the following conditions have to be met for every vertex v
 - if n_i, n_j ∈ N_v, then n_i != n_j
