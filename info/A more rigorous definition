@@ -11,9 +11,9 @@ For a graph G to be simple, the following conditions have to be met for every ve
 
 Now, consider the case where each vertex v is given a 'value' [v], which can be 1, 0 or -1 (often written as A, 0 and B repectively)
 
-If we define that x++y = x+y if -1 <= x+y <= 1
-                         -1  if x+y < -1
-                         1   if x+y > 1
+If we define that x[+]y = x+y if -1 <= x+y <= 1
+                          -1 if x+y < -1
+                           1 if x+y > 1
 
 The function n(v) can now be defined as n(v) = 1-Π(1-([n_i_v]++1)) with n_i_v ranging through every element in N_v (1 <= i <= d_v)
 n(v) will return 1 if [n_i_v] = 1 for any i, and 0 otherwise.
